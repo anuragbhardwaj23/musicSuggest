@@ -1,0 +1,32 @@
+{
+  "name": "musicsuggest",
+  "version": "1.0.0",
+  "description": "Chatbot which suggests music according to mood to the person ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Anurag",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anuragbhardwaj23/musicSuggest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anuragbhardwaj23/musicSuggest/issues"
+  },
+  "homepage": "https://github.com/anuragbhardwaj23/musicSuggest#readme",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.1",
+    "npm": "^10.9.0"
+  }
+}
