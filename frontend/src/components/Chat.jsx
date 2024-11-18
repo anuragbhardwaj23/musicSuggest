@@ -9,7 +9,7 @@ const Chat = () => {
   const handleChatSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/api/chat', { userMessage: message });
+      const { data } = await axios.post('"http://localhost:5000/api/chat', { userMessage: message });
       setResponse(data.recommendations);
     } catch (err) {
       console.error('Chat Error:', err);
