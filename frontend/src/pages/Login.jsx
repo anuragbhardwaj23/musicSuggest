@@ -1,48 +1,43 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { loginUser } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../services/authService';
-import '../styles/Login.css';
 
 const Login = () => {
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await login(formData);
-      navigate('/');
-    } catch (err) {
-      console.error('Login Error:', err);
+      await loginUser({ username, password });
+      navigate('/home'); // Redirect to Home page after successful login
+    } catch (error) {
+      setErrorMessage(error);
     }
   };
 
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <input
           type="text"
-          name="username"
           placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
         />
         <input
           type="password"
-          name="password"
           placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <button type="submit">Login</button>
       </form>
+      {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
 };
